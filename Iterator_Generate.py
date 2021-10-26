@@ -22,6 +22,11 @@ class Country_Iterator:
 
 
 if __name__ == '__main__':
+    def generate(path):
+        with open(path) as file:
+            for line in file:
+                yield line.upper()
+
     url = "https://en.wikipedia.org/wiki/"
     file_json = os.path.join(os.getcwd(), "countries.json")
     for name_country in Country_Iterator(file_json):
@@ -29,3 +34,5 @@ if __name__ == '__main__':
         pprint(f'Город {name_country} - {name_fix}')
         hash_object = hashlib.md5(b'{name_fix}')
         print(hash_object.hexdigest())
+    for enemy in generate(file_json):
+        print(enemy.split())
